@@ -339,13 +339,14 @@ section:not(#hero)::before {
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px;
+    /* Reduzido gap para evitar que a soma das larguras + gap force o wrap */
+    gap: 20px;
     max-width: 1000px;
     margin: 0 auto;
 }
 
 .mv-item {
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: left;
@@ -356,14 +357,18 @@ section:not(#hero)::before {
 }
 
 .mv-item.missao {
-    flex: 2 1 45%;
+    /* Fixar a largura base da coluna 'missao' em 45% (não cresce nem encolhe)
+       para previsibilidade quando combinada com a coluna 'valores'. */
+    flex: 0 0 45%;
     max-width: 45%;
     background-color: #fff;
 }
 
 .mv-item.valores {
-    flex: 1 1 35%;
-    max-width: 35%;
+    /* Usar 50% para a coluna 'valores' deixando margem suficiente para o gap
+       (45% + 50% = 95%), evitando empilhamento em larguras intermediárias. */
+    flex: 0 0 50%;
+    max-width: 50%;
     background-color: var(--light-bg);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
